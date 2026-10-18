@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIPLEY Tour & Adventure Bali - Digital Brochure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .hero-bg {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.06);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+        }
+        .focus-ring:focus {
+            outline: 3px solid rgba(249, 115, 22, 0.35);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <header class="hero-bg text-white relative overflow-hidden pb-16 pt-12 px-4 sm:px-6 lg:px-8 shadow-xl">
+        <div class="max-w-7xl mx-auto relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-300 mb-6 backdrop-blur-sm">
+                <i data-lucide="compass" class="w-5 h-5" aria-hidden="true"></i>
+                <span class="text-xs sm:text-sm font-semibold tracking-wide uppercase">Official Tour & Adventure Specialist Bali</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                KIPLEY <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">BALI</span> TOUR
+            </h1>
+            <p class="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto mb-8 font-light">
+                Jelajahi keindahan alam & sensasi petualangan seru Bali. Pilihan paket wisata terlengkap dengan foto & pengalaman asli!
+            </p>
+
+            <div class="max-w-3xl mx-auto bg-white/10 p-3 sm:p-4 rounded-2xl backdrop-blur-md border border-white/20 shadow-2xl">
+                <div class="relative flex-grow mb-3">
+                    <i data-lucide="search" class="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"></i>
+                    <input type="text" id="searchInput" placeholder="Cari paket (misal: ATV, Jeep, Lovina, Nusa Penida, Spa)..." aria-label="Cari paket wisata" class="focus-ring w-full pl-11 pr-4 py-3 rounded-xl bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium text-sm sm:text-base">
+                </div>
+                <div class="flex flex-wrap gap-2 justify-center" id="categoryButtons">
+                    <button type="button" onclick="setCategory('all', this)" class="cat-btn active bg-orange-500 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition focus-ring" aria-pressed="true">Semua Paket</button>
+                    <button type="button" onclick="setCategory('atv', this)" class="cat-btn bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition focus-ring" aria-pressed="false">🏎️ ATV & Offroad</button>
+                    <button type="button" onclick="setCategory('water', this)" class="cat-btn bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition focus-ring" aria-pressed="false">🌊 Bahari & Watersport</button>
+                    <button type="button" onclick="setCategory('nature', this)" class="cat-btn bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition focus-ring" aria-pressed="false">🌋 Mount & Nature</button>
+                    <button type="button" onclick="setCategory('spa', this)" class="cat-btn bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition focus-ring" aria-pressed="false">🌺 Wellness & Spa</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 w-full">
+        <div class="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-5 sm:p-6 rounded-2xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-amber-300/30">
+            <div class="flex items-start gap-4">
+                <div class="bg-white/20 p-3 rounded-xl backdrop-blur-sm shrink-0">
+                    <i data-lucide="car" class="w-8 h-8 text-white" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-1 flex items-center gap-2">
+                        🚗 Layanan Transportasi Private (7-Seater)
+                    </h3>
+                    <p class="text-amber-100 text-xs sm:text-sm leading-relaxed">
+                        <span class="font-semibold underline">Catatan Penting:</span> Seluruh harga paket rekreasi & aktivitas di bawah ini <span class="font-bold underline">belum termasuk transportasi</span>. Tambahkan sewa mobil sesuai jadwal tur Anda.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+                <div class="bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/20 text-center">
+                    <span class="text-[11px] text-amber-100 block uppercase font-medium">Full Day Trip</span>
+                    <span class="text-lg font-bold">IDR 550.000 <span class="text-xs font-normal">/ Mobil</span></span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/20 text-center">
+                    <span class="text-[11px] text-amber-100 block uppercase font-medium">Half Day (Max 5 Jam)</span>
+                    <span class="text-lg font-bold">IDR 350.000 <span class="text-xs font-normal">/ Mobil</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="packageGrid">
+
+            <div class="pkg-card glass-card rounded-2xl overflow-hidden border border-slate-200 shadow-md card-hover flex flex-col" data-cat="atv" data-title="atv rafting jambe bali combo single fun extreme real adventure temple run">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="ATV & Rafting Jambe Bali" loading="lazy" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-orange-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">Jambe Bali</span>
+                    <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded">Foto Asli Jambe Bali</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">🏎️ ATV & Rafting Packages</h3>
+                    <p class="text-xs text-slate-500 mb-4 flex items-center gap-1.5 font-medium">
+                        <i data-lucide="utensils" class="w-4 h-4 text-orange-500" aria-hidden="true"></i> Termasuk Makan Siang (All Included Lunch)
+                    </p>
+                    <div class="space-y-3 mb-6 flex-grow">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <h4 class="text-xs font-bold text-orange-600 uppercase tracking-wider mb-2">Paket Combo ATV + Rafting</h4>
+                            <ul class="text-xs space-y-1.5 text-slate-700">
+                                <li class="flex justify-between"><span>Fun ATV + Rafting</span> <span class="font-bold">IDR 900.000 /pax</span></li>
+                                <li class="flex justify-between"><span>Extreme ATV + Rafting</span> <span class="font-bold">IDR 1.000.000 /pax</span></li>
+                                <li class="flex justify-between"><span>Real Adventure + Rafting</span> <span class="font-bold">IDR 1.100.000 /pax</span></li>
+                                <li class="flex justify-between"><span>Temple Run + Rafting</span> <span class="font-bold">IDR 1.200.000 /pax</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Paket Single ATV Only</h4>
+                            <ul class="text-xs space-y-1.5 text-slate-700">
+                                <li class="flex justify-between"><span>Fun ATV Bali</span> <span class="font-bold">IDR 600.000 /pax</span></li>
+                                <li class="flex justify-between"><span>Extreme ATV Bali</span> <span class="font-bold">IDR 700.000 /pax</span></li>
+                                <li class="flex justify-between"><span>Real Adventure ATV</span> <span class="font-bold">IDR 800.000 /pax</span></li>
+                                <li class="flex justify-between"><span>Temple Run ATV Bali</span> <span class="font-bold">IDR 900.000 /pax</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6281238184292?text=Halo%20KIPLEY%20Bali,%20saya%20tertarik%20dengan%20Paket%20ATV%20%26%20Rafting%20Jambe%20Bali" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pkg-card glass-card rounded-2xl overflow-hidden border border-slate-200 shadow-md card-hover flex flex-col" data-cat="nature" data-title="jeep sunrise kintamani gunung batur black lava black sand segara temple">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=800&q=80" alt="Jeep Sunrise Kintamani Bali" loading="lazy" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-amber-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">Kintamani</span>
+                    <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded">Foto Asli Gunung Batur</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">🌋 Jeep Sunrise Kintamani</h3>
+                        <span class="text-lg font-extrabold text-orange-600">IDR 550k <span class="text-xs font-normal text-slate-500">/pax</span></span>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">Menikmati indahnya matahari terbit di Gunung Batur dengan mobil Jeep 4x4 klasik dan pengemudi berpengalaman.</p>
+                    <div class="space-y-3 mb-6 text-xs text-slate-700 flex-grow">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <h4 class="font-bold uppercase text-slate-500 mb-1.5">Termasuk (Inclusions):</h4>
+                            <ul class="space-y-1">
+                                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600" aria-hidden="true"></i> Driver berpengalaman</li>
+                                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600" aria-hidden="true"></i> Fotografer profesional (photo by phone)</li>
+                                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600" aria-hidden="true"></i> Tiket masuk kawasan Gunung Batur</li>
+                                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600" aria-hidden="true"></i> Kopi atau Teh hangat di atas gunung</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold uppercase text-slate-500 mb-1.5">Destinasi Wisata:</h4>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-amber-100/80 text-amber-900 text-[11px] px-2.5 py-1 rounded-md font-medium">Sunrise Mt. Batur</span>
+                                <span class="bg-amber-100/80 text-amber-900 text-[11px] px-2.5 py-1 rounded-md font-medium">Black Lava</span>
+                                <span class="bg-amber-100/80 text-amber-900 text-[11px] px-2.5 py-1 rounded-md font-medium">Black Sand / Segara Temple</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6281238184292?text=Halo%20KIPLEY%20Bali,%20saya%20tertarik%20dengan%20Paket%20Jeep%20Sunrise%20Kintamani%20Bali" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pkg-card glass-card rounded-2xl overflow-hidden border border-slate-200 shadow-md card-hover flex flex-col" data-cat="nature" data-title="bali hiking trekking pendakian bukit alam">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Bali Hiking Experience" loading="lazy" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-emerald-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">Trekking</span>
+                    <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded">Foto Asli Hiking Bali</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">🥾 Bali Hiking Package</h3>
+                        <span class="text-lg font-extrabold text-orange-600">IDR 500k <span class="text-xs font-normal text-slate-500">/pax</span></span>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">Untuk pencinta hiking & alam terbuka, nikmati pendakian pagi hari menyaksikan panorama bukit di Bali.</p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60 mb-6 flex-grow">
+                        <h4 class="font-bold text-xs uppercase text-slate-500 mb-2">Termasuk (Inclusions):</h4>
+                        <ul class="text-xs space-y-2 text-slate-700">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600" aria-hidden="true"></i> Tiket Masuk (Entrance Ticket)</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600" aria-hidden="true"></i> Kudapan Pagi (Early Snack)</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600" aria-hidden="true"></i> Air Mineral</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600" aria-hidden="true"></i> Local Guide English Speaking & Senter</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6281238184292?text=Halo%20KIPLEY%20Bali,%20saya%20tertarik%20dengan%20Paket%20Bali%20Hiking" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pkg-card glass-card rounded-2xl overflow-hidden border border-slate-200 shadow-md card-hover flex flex-col" data-cat="spa" data-title="bali orchid spa massage relaksasi lulur scrub flower bath thalasso">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80" alt="Bali Orchid Spa 2 Hours" loading="lazy" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-pink-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">2 Hours Spa</span>
+                    <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded">Foto Asli Bali Orchid Spa</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">🌺 Bali Orchid Spa Package</h3>
+                        <span class="text-lg font-extrabold text-orange-600">IDR 500k <span class="text-xs font-normal text-slate-500">/pax</span></span>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">Manjakan tubuh dan pikiran setelah seharian beraktivitas dengan perawatan spa tradisional Bali yang menenangkan.</p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60 mb-6 flex-grow">
+                        <h4 class="font-bold text-xs uppercase text-slate-500 mb-2">Rangkaian Perawatan (Duration 2 Hours):</h4>
+                        <ul class="text-xs space-y-1.5 text-slate-700">
+                            <li class="flex justify-between"><span>Thalasso Foot Wash</span> <span class="text-slate-500 font-semibold">5 mins</span></li>
+                            <li class="flex justify-between"><span>Lulur Scrub</span> <span class="text-slate-500 font-semibold">15 mins</span></li>
+                            <li class="flex justify-between"><span>Shower & Flower Bath</span> <span class="text-slate-500 font-semibold">25 mins</span></li>
+                            <li class="flex justify-between"><span>Balinese Massage</span> <span class="text-slate-500 font-semibold">60 mins</span></li>
+                            <li class="flex justify-between"><span>Yogurt Moisturizer</span> <span class="text-slate-500 font-semibold">15 mins</span></li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6281238184292?text=Halo%20KIPLEY%20Bali,%20saya%20tertarik%20dengan%20Paket%20Bali%20Orchid%20Spa" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pkg-card glass-card rounded-2xl overflow-hidden border border-slate-200 shadow-md card-hover flex flex-col" data-cat="water" data-title="snorkeling blue lagoon tanjung jepun padang bai karang ikan boat guide">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Snorkeling Blue Lagoon Tanjung Jepun" loading="lazy" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-cyan-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">Blue Lagoon</span>
+                    <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded">Foto Asli Snorkeling Bali</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">🪸 Snorkeling Bali</h3>
+                        <span class="text-lg font-extrabold text-orange-600">IDR 450k <span class="text-xs font-normal text-slate-500">/pax</span></span>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">Jelajahi keindahan bawah laut Bali (Blue Lagoon & Tanjung Jepun) selama 2 Jam dengan terumbu karang & ikan warna-warni.</p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60 mb-6 flex-grow">
+                        <h4 class="font-bold text-xs uppercase text-slate-500 mb-2">Termasuk (Inclusions):</h4>
+                        <ul class="text-xs space-y-2 text-slate-700">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-600" aria-hidden="true"></i> Peralatan Snorkeling Lengkap</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-600" aria-hidden="true"></i> Makan Siang (Lunch)</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-600" aria-hidden="true"></i> Perahu Boat & Pemandu Snorkeling (Guide)</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6281238184292?text=Halo%20KIPLEY%20Bali,%20saya%20tertarik%20dengan%20Paket%20Snorkeling%20Blue%20Lagoon%20%26%20Tanjung%20Jepun" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pkg-card glass-card rounded-2xl overflow-hidden border border-slate-200 shadow-md card-hover flex flex-col" data-cat="water" data-title="dolphin lovina aling aling waterfall lumba lumba air terjun cliff jump slide boat">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1570458436416-b8fcccfe883f?auto=format&fit=crop&w=800&q=80" alt="Dolphin Lovina & Aling-Aling Waterfall" loading="lazy" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-blue-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">Lovina & Waterfall</span>
+                    <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded">Foto Asli Lovina Bali</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">🐬 Dolphin & Aling-Aling</h3>
+                        <span class="text-lg font-extrabold text-orange-600">IDR 500k <span class="text-xs font-normal text-slate-500">/pax</span></span>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">Menyaksikan lumba-lumba berenang bebas di Lovina serta petualangan melompat di air terjun Aling-Aling.</p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60 mb-6 flex-grow">
+                        <h4 class="font-bold text-xs uppercase text-slate-500 mb-2">Termasuk (Inclusions):</h4>
+                        <ul class="text-xs space-y-1.5 text-slate-700">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600" aria-hidden="true"></i> Traditional Perahu Boat & Captain Boat</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600" aria-hidden="true"></i> Dolphin Spotting</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600" aria-hidden="true"></i> Peralatan Snorkeling & Life Jacket</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600" aria-hidden="true"></i> Waterfall Slide & Cliff Jump (5m, 10m, 15m)</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6281238184292?text=Halo%20KIPLEY%20Bali,%20saya%20tertarik%20dengan%20Paket%20Dolphin%20Lovina%20%26%20Aling-Aling" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pkg-card glass-card rounded-2xl overflow-hidden border border-slate-200 shadow-md card-hover flex flex-col" data-cat="water" data-title="nusa penida kelingking beach fast boat manta bay crystal bay gamat bay west east trip">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80" alt="Nusa Penida Tour Experience" loading="lazy" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-teal-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">Island Trip</span>
+                    <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded">Foto Asli Nusa Penida</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">🏝️ Nusa Penida Package</h3>
+                        <span class="text-lg font-extrabold text-orange-600">IDR 950k <span class="text-xs font-normal text-slate-500">/pax</span></span>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">Trip eksklusif menjelajahi tebing ikonik dan pantai eksotis di Pulau Nusa Penida.</p>
+                    <div class="space-y-3 mb-6 text-xs text-slate-700 flex-grow">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <h4 class="font-bold uppercase text-slate-500 mb-1.5">Termasuk (Inclusions):</h4>
+                            <ul class="space-y-1">
+                                <li>• Tiket Fast Boat Bolak-Balik (Return Fast Boat)</li>
+                                <li>• Private English Speaking Driver di Nusa Penida</li>
+                                <li>• Pilihan Trip: West Trip atau East Trip</li>
+                                <li>• Tiket Masuk Destinasi & Makan Siang (Lunch)</li>
+                            </ul>
+                        </div>
+                        <div class="bg-teal-50 p-2.5 rounded-xl border border-teal-200/70">
+                            <span class="font-bold text-teal-800 block">Extra Snorkeling Add-on (+IDR 300.000 / pax):</span>
+                            <span class="text-teal-700 block mt-0.5">Crystal Bay, Gamat Bay, & Manta Bay</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6281238184292?text=Halo%20KIPLEY%20Bali,%20saya%20tertarik%20dengan%20Paket%20Nusa%20Penida" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pkg-card glass-card rounded-2xl overflow-hidden border border-slate-200 shadow-md card-hover flex flex-col" data-cat="water" data-title="water sport tanjung benoa parasailing banana boat jet ski pantai ocean">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1563299796-b729d0af54a5?auto=format&fit=crop&w=800&q=80" alt="Water Sport Tanjung Benoa Bali" loading="lazy" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-sky-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">Tanjung Benoa</span>
+                    <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded">Foto Asli Water Sport</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">🌊 Water Sport Package</h3>
+                        <span class="text-lg font-extrabold text-orange-600">IDR 850k <span class="text-xs font-normal text-slate-500">/pax</span></span>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">Aktivitas rekreasi air penuh tantangan & keseruan di Tanjung Benoa Bali.</p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60 mb-6 flex-grow">
+                        <h4 class="font-bold text-xs uppercase text-slate-500 mb-2">Aktivitas Termasuk:</h4>
+                        <ul class="text-xs space-y-2 text-slate-700">
+                            <li class="flex items-center gap-2"><i data-lucide="wind" class="w-4 h-4 text-sky-500" aria-hidden="true"></i> Parasailing</li>
+                            <li class="flex items-center gap-2"><i data-lucide="anchor" class="w-4 h-4 text-sky-500" aria-hidden="true"></i> Banana Boat</li>
+                            <li class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-sky-500" aria-hidden="true"></i> Jet Ski</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6281238184292?text=Halo%20KIPLEY%20Bali,%20saya%20tertarik%20dengan%20Paket%20Water%20Sport%20Tanjung%20Benoa" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pkg-card glass-card rounded-2xl overflow-hidden border border-slate-200 shadow-md card-hover flex flex-col" data-cat="nature" data-title="paragliding terbang pantai tebing cliff video insurance 15 menit">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1516592673884-4a382d1124c2?auto=format&fit=crop&w=800&q=80" alt="Paragliding Bali Flying Experience" loading="lazy" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-indigo-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">Aerial Sport</span>
+                    <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded">Foto Asli Paragliding Bali</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">🪂 Paragliding Bali</h3>
+                        <span class="text-lg font-extrabold text-orange-600">IDR 1.200k <span class="text-xs font-normal text-slate-500">/pax</span></span>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">Terbang bebas di atas tebing dan pantai indah Bali untuk sensasi tak terlupakan.</p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60 mb-6 flex-grow">
+                        <h4 class="font-bold text-xs uppercase text-slate-500 mb-2">Inclusions & Detail:</h4>
+                        <ul class="text-xs space-y-2 text-slate-700">
+                            <li class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-indigo-500" aria-hidden="true"></i> Durasi: 15 Menit Terbang</li>
+                            <li class="flex items-center gap-2"><i data-lucide="video" class="w-4 h-4 text-indigo-500" aria-hidden="true"></i> Dokumentasi Video HD Included</li>
+                            <li class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-indigo-500" aria-hidden="true"></i> Asuransi Keselamatan Lengkap</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6281238184292?text=Halo%20KIPLEY%20Bali,%20saya%20tertarik%20dengan%20Paket%20Paragliding%20Bali" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pkg-card glass-card rounded-2xl overflow-hidden border border-slate-200 shadow-md card-hover flex flex-col" data-cat="atv" data-title="dirt bike motor trail klx crf ktm 150cc 230cc 250cc 300cc 350cc offroad">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80" alt="Dirt Bike Offroad Tour Bali" loading="lazy" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-red-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">Offroad Trail</span>
+                    <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded">Foto Asli Dirt Bike Bali</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">🏍️ Dirt Bike Package</h3>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">Jelajahi medan ekstrem Bali menggunakan motor trail berkualitas tinggi.</p>
+                    <div class="space-y-3 mb-6 text-xs text-slate-700 flex-grow">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <h4 class="text-xs font-bold text-red-600 uppercase mb-2">Pilihan Motor & Harga:</h4>
+                            <ul class="space-y-1">
+                                <li class="flex justify-between"><span>KLX / CRF 150cc</span> <span class="font-bold">IDR 1.850.000</span></li>
+                                <li class="flex justify-between"><span>KLX 230cc</span> <span class="font-bold">IDR 2.500.000</span></li>
+                                <li class="flex justify-between"><span>KTM 250, 300, 350cc</span> <span class="font-bold">IDR 3.600.000</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <h4 class="font-bold text-slate-500 uppercase mb-1">Inclusions:</h4>
+                            <p class="text-slate-600 leading-relaxed">Welcome Drink, Motor Bike Insurance & Safety Box, Safety Equipment, Fuel, Lunch A la carte, Guide/Leader, & Documentation by phone.</p>
+                        </div>
+                        <div class="bg-amber-50 p-2.5 rounded-xl border border-amber-200/70 text-amber-900">
+                            <span class="font-bold block">Catatan Ketentuan:</span>
+                            <span>• Minimum 2 person (Solo rider extra IDR 450.000)</span><br>
+                            <span>• Additional Charge: Donasi Desa IDR 75.000</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6281238184292?text=Halo%20KIPLEY%20Bali,%20saya%20tertarik%20dengan%20Paket%20Dirt%20Bike" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pkg-card glass-card rounded-2xl overflow-hidden border border-slate-200 shadow-md card-hover flex flex-col" data-cat="atv" data-title="buggy bali offroad utv single tandem lumpur sawah instructor">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" alt="Buggy Bali Offroad Adventure" loading="lazy" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-orange-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">UTV Buggy</span>
+                    <span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded">Foto Asli Buggy Bali</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">🚜 Buggy Bali Package</h3>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">Mengendarai kendaraan Buggy / UTV melintasi trek berlumpur dan persawahan Bali.</p>
+                    <div class="space-y-3 mb-6 text-xs text-slate-700 flex-grow">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <h4 class="text-xs font-bold text-slate-600 uppercase mb-2">Harga Paket:</h4>
+                            <ul class="space-y-1.5 text-sm">
+                                <li class="flex justify-between"><span>Single Buggy</span> <span class="font-bold text-orange-600">IDR 750.000 /pax</span></li>
+                                <li class="flex justify-between"><span>Tandem Buggy</span> <span class="font-bold text-orange-600">IDR 1.100.000 / 2pax</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <h4 class="font-bold text-slate-500 uppercase mb-1">Termasuk (Inclusions):</h4>
+                            <p class="text-slate-600 leading-relaxed">Welcome Drink & Locker, Asuransi Keselamatan (Insurance), Safety Gear, Makan Siang (Lunch), & Instruktur Profesional.</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6281238184292?text=Halo%20KIPLEY%20Bali,%20saya%20tertarik%20dengan%20Paket%20Buggy%20Bali" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-white border-t border-slate-800 mt-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+            <div>
+                <h2 class="text-2xl font-extrabold tracking-tight mb-2 text-white">KIPLEY TOUR & ADVENTURE BALI</h2>
+                <p class="text-slate-400 text-xs sm:text-sm">Solusi Terbaik & Terpercaya Petualangan Liburan Anda di Bali.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://wa.me/6281238184292" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-bold text-sm transition shadow-lg">
+                    <i data-lucide="phone" class="w-5 h-5" aria-hidden="true"></i>
+                    <span>081238184292</span>
+                </a>
+                <a href="https://www.instagram.com/kipley08" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white px-5 py-3 rounded-xl font-bold text-sm transition shadow-lg">
+                    <i data-lucide="instagram" class="w-5 h-5" aria-hidden="true"></i>
+                    <span>@kipley08</span>
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-slate-800 mt-8 pt-6 text-center text-xs text-slate-500">
+            &copy; 2026 KIPLEY Tour & Adventure Bali. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        let currentCategory = 'all';
+        let searchTimer = null;
+
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(() => {
+                    filterPackages();
+                }, 150);
+            });
+        }
+
+        function setCategory(cat, btn) {
+            currentCategory = cat;
+
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach((b) => {
+                const isActive = b === btn;
+                b.classList.toggle('bg-orange-500', isActive);
+                b.classList.toggle('text-white', isActive);
+                b.classList.toggle('bg-white/10', !isActive);
+                b.setAttribute('aria-pressed', String(isActive));
+            });
+
+            filterPackages();
+        }
+
+        function filterPackages() {
+            const query = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
+            const cards = document.querySelectorAll('.pkg-card');
+
+            cards.forEach((card) => {
+                const category = card.getAttribute('data-cat');
+                const title = (card.getAttribute('data-title') || '').toLowerCase();
+                const text = card.textContent.toLowerCase();
+
+                const matchesCat = (currentCategory === 'all' || category === currentCategory);
+                const matchesSearch = !query || title.includes(query) || text.includes(query);
+
+                card.style.display = (matchesCat && matchesSearch) ? 'flex' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
